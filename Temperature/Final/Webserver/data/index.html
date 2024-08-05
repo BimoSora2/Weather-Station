@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station</title>
+    <link rel="stylesheet" href="assets/css/foundation.css">
+    <script src="assets/js/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="grid-container full">
+      <div class="grid-background-menu">
+        <div class="grid-x grid-padding-x">
+          <div class="large-auto medium-auto small-12 cell">
+            <div class="top-bar">
+              <div class="top-bar-center">
+                <ul class="text-center menu simple">
+                  <li class="menu vertical">
+                    <h3>WEATHER STATION</h3>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="grid-container full text-center">
+      <div class="grid-y grid-padding-y">
+        <div class="large-12 cell">
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 medium-12 small-12 cell">
+              <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                  <div class="large-12 medium-12 small-12 cell">
+                    <div class="callout secondary">
+                      <p><img src="img/height.png"><br /><span id="height"> %HEIGHT% </span> m </p>
+                    </div>
+                  </div>
+                  <div class="large-6 medium-6 small-12 cell">
+                    <div class="callout secondary">
+                      <p><img src="img/temp.png"><br /><span id="temp"> %TEMP% </span> &deg;C </p>
+                    </div>
+                  </div>
+                  <div class="large-6 medium-6 small-12 cell">
+                    <div class="callout secondary">
+                      <p><img src="img/pressure.png"><br /><span id="pressure"> %PRESSURE% </span> hPa </p>
+                    </div>
+                  </div>
+                  <div class="large-6 medium-6 small-12 cell">
+                    <div class="callout secondary">
+                      <p><img src="img/rainfall.png"><br /><span id="rain"> %RAIN% </span></p>
+                    </div>
+                  </div>
+                  <div class="large-6 medium-6 small-12 cell">
+                    <div class="callout secondary">
+                      <p><img src="img/light.png"><br /><span id="light"> %LIGHT% </span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      setInterval(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("temp").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/temp", true);
+        xhttp.send();
+      }, 500);
+      setInterval(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("pressure").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/pressure", true);
+        xhttp.send();
+      }, 500);
+      setInterval(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("rain").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/rain", true);
+        xhttp.send();
+      }, 500);
+      setInterval(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("light").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/light", true);
+        xhttp.send();
+      }, 500);
+      setInterval(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("height").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/height", true);
+        xhttp.send();
+      }, 500);
+    </script>
+  </body>
+</html>
